@@ -11,7 +11,7 @@
 
 #Puzzle 2: riddle (fire)
 #       In darkness, there will be light. In discomfort, there will be warmth. And yet, I can be your worst nightmare.
-#       Hint: Water can hurt me, and yet help me.
+#       Hint: Water can hurt me, and yet be my friend.
 
 #Computer: time waster (ie)
 #       Please input password: 
