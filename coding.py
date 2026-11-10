@@ -4,10 +4,19 @@ print("You wake up in a gray room, dimly lit yellow lights barely give the room 
 
 things_to_do = ["box", "puzzle", "computer", "door"]
 
+box = 0
+puzzle = 0
+computer = 0
+door = 0
+
 print()
 
 answer = input("Where would you like to go? ")
 answer.lower()
 
 if answer == "box":
-    print("You walk up to the box, it is locked and a ")
+        print("You walk up to the box, it is locked and a 3-digit code is needed to unlock it.")
+        if puzzle == 1:
+            p
+        else:
+            pass
