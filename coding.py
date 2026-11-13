@@ -33,8 +33,11 @@ tries_door = 1
 
 guess1 = ""
 guess2 = ""
+password = ""
+code = ""
 
 keys_box = ["green", "blue", "red"]
+length = 3
 keys_inventory = []
 
 box_math = 0
@@ -44,8 +47,7 @@ box = 0
 computer = 0
 door = 0
 escape = 0
-something1 = False
-something2 = True
+
 tries = [tries_puzzle_math, tries_puzzle_riddle, tries_computer, tries_box, tries_door, ]
 challenge = ["finish the puzzle box math challenge", "finish the puzzle box riddle challenge", "log onto the computer", "open the box", "open the door", ]
 try_length = len(tries)
@@ -97,10 +99,80 @@ while escape != 1:
     if puzzle == 1 and answer == "puzzle":
         print("The box shakes, '2,4' and 'fire' are written on the paper. There is nothing you can do here")
 
-    if answer == "computer":
-        pass
-    if answer == "box":
-        pass
+
+
+    if answer == "computer" and computer == 0:
+        print("You walk up to the computer. It is on a login screen for escape723@escaperoom.com. There is a sticky note attached to the side of the computer: 'DON'T FORGET, YOUR PASSWORD IS TWO LETTERS LONG (I have made some puzzles to help you remember)'")
+        time.sleep(2)
+        while password != "ie":
+            password = input("Please input password (if you would like to quit type: quit): ")
+            password = password.lower()
+            if password == "ie" or password == "quit":
+                if password == "ie":
+                    print("\nYou type in 'ie', the loading circle pops up before letting you in.")
+                    computer += 1
+                    break
+                else:
+                    print("You walk away from the computer")
+                    break
+            else:
+                print(f"You type in '{password}', the loading circle pops up before bringing you back to the log in screen.")
+                tries_computer += 1
+    if answer == "computer" and computer == 1:
+        print("The homescreen on the computer is three digits: 327. There is nothing you can do here")
+
+
+
+    if answer == "box" and box == 0:
+        print("\nYou walk up to the box, it is locked and a 3-digit code is needed to unlock it.")
+        time.sleep(1)
+        while code != "327":
+            code = input("Please input code (if you would like to quit type: quit): ")
+            if code != "327" or code == "quit":
+                if code == "327":
+                    print(f"\nThe box unlocks, revealing {length} different keys; {keys_box}")
+                    key_choice = input(f"Pick a key; enter one of the following {keys_box}: ")
+                    key_choice = key_choice.lower()
+                    box += 1
+                    if key_choice == "green":
+                        keys_inventory.append("green")
+                        keys_box.remove("green")
+                        length -= 1
+                    elif key_choice == "red":
+                        keys_inventory.append("red")
+                        keys_box.remove("red")
+                        length -= 1
+                    else:
+                        keys_inventory.append("blue")
+                        keys_box.remove("blue")
+                        length -= 1
+                    break
+    if answer == "box" and box == 1:
+        print("\nYou walk up to the box, it is unlocked.")
+        time.sleep(1)
+        if length > 0:
+            print(f"\nIt reveals {length} different keys; {keys_box}")
+            key_choice = input(f"Pick a key; enter one of the following {keys_box}: ")
+            key_choice = key_choice.lower()
+            if key_choice == "green":
+                keys_inventory.append("green")
+                keys_box.remove("green")
+                length -= 1
+            elif key_choice == "red":
+                keys_inventory.append("red")
+                keys_box.remove("red")
+                length -= 1
+            else:
+                keys_inventory.append("blue")
+                keys_box.remove("blue")
+                length -= 1
+        else:
+            print("You have all the keys, why are you back?")
+    
+
+
+
+
     if answer == "door":
         pass
     if "escape" in answer:
@@ -110,7 +182,7 @@ while escape != 1:
 
             
 
-    answer = input("\n\n\nWhere would you like to go? ")
+    answer = input("\nWhere would you like to go? ")
     answer = answer.lower()
 
 won = tries_print(tries,challenge,try_length)
