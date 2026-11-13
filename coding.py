@@ -30,13 +30,19 @@ tries_puzzle_riddle = 1
 tries_box = 1
 tries_computer = 1
 tries_door = 1
+
 guess1 = ""
 guess2 = ""
+
 keys_box = ["green", "blue", "red"]
 keys_inventory = []
+
 box_math = 0
 box_riddle = 0
 puzzle = 0
+box = 0
+computer = 0
+door = 0
 escape = 0
 something1 = False
 something2 = True
